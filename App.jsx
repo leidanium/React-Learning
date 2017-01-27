@@ -1,40 +1,27 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        
-        this.state = {
-            data: 'Initial data....'
-        }
-        
-        this.updateState = this.updateState.bind(this);
-    };
-    
-    updateState() {
-        this.setState({data: 'Data updated from child componant...'})
-    }
-    
-    render() {
-        return (
-            <div>
-                <Content myDataProp = {this.state.data} updateStateProp = {this.updateState} />
-            </div>
-        );
-    }
+import { Router, Route, Link, browserHistory, IndexRoute  } from 'react-router';
+
+
+
+export default class App extends React.Component {
+   render() {
+      return (
+         <div>
+            <h1>Test</h1>
+            <ul>
+               <li><Link to="home">Home</Link></li>
+               <li><Link to="about">About</Link></li>
+               <li><Link to="contact">Contact</Link></li>
+               
+            </ul>
+				
+           {this.props.children}
+         </div>
+      );
+   }
 }
-   
-class Content extends React.Component {
-    render() {
-        return (
-            <div>
-                <button onClick = {this.props.updateStateProp}> Click for see</button>
-                <h4>{this.props.myDataProp}</h4>
-            </div>
-        );
-    }
-}
-                    
-export default App;
+
