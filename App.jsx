@@ -1,32 +1,29 @@
 import React from 'react';
 
 
+
 class App extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         
         this.state = {
-            data: []
+            data: 'Initial data....'
         }
         
-        this.setStateHandler = this.setStateHandler.bind(this);
-    }
+        this.updateState = this.updateState.bind(this);
+    };
     
-    setStateHandler() {
-        var item = "setState..."
-        var myArray = this.state.data;
-        myArray.push(item)
-        this.setState({data: myArray})
+    updateState() {
+        this.setState({data: 'Data updated'})
     }
     
     render() {
         return (
             <div>
-                <button onClick = {this.setStateHandler}>Set State</button>
-                <h4>State Array: {this.state.data}</h4>
-            </div>
-        );
+                <button onClick= {this.updateState}>Click</button>
+                <h4>{this.state.data}</h4>
+            </div>);
     }
 }
-
+   
 export default App;
